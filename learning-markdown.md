@@ -58,4 +58,4 @@ console.log("Language specific code block");
 | First Header | Second Header |
 | ------------ | :-----------: |
 | Content cell 1 | Content cell 2 |
-| Content cell 3 | Content cell 4 |
+| Content cell 3 | Content cell 4 | 
