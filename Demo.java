@@ -1,19 +1,29 @@
-import java.math.BigInteger;
+import java.util.Scanner;
 
 public class Demo {
     public static void main(String[] args) {
-        // // Non-Class data type
-        // int i = Integer.MAX_VALUE;
-        // double d = 5.5;
-        // i++; // This will make it overflow and go back to the Min_Value
-        // // Class data type
-        // String s = "Hello";
-
-        // BigInteger bi = new BigInteger("9999999999");// Class can not use + - * /
-        // BigInteger bi2 = new BigInteger("9999999999");
-        // System.out.println(bi.multiply(bi2));
-        int a = 5;
-        int b = 3;
-        System.out.println("The answer is: " + a + b);
+        Scanner scanner = new Scanner(System.in);
+        char ch;
+        double n = 5;
+        System.out.println(n);
+        System.out.print("Enter a letter: ");
+        ch = scanner.nextLine().charAt(0);
+        while (true) {
+            if ((ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122)){
+                break;
+            } else {
+                System.out.println("Error");
+                System.out.print("Enter a letter: ");
+                ch = scanner.nextLine().charAt(0);
+            }
+            
+        }
+        if (ch >= 65 && ch <= 90){
+            ch += 32;
+        } else if (ch >= 97 && ch <= 122) {
+            ch -= 32;
+        }
+        System.out.println("The letter is: " + ch);
+        scanner.close();
     }
 }
