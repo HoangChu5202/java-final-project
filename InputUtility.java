@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Scanner;
 public class InputUtility {
@@ -19,10 +20,10 @@ public class InputUtility {
      * @param in - a Scanner object
      * @return - the user's input if it was valid
      */
-    public static String validateUserString(String prompt, String[] possibleValues, Scanner in) {
+    public static String validateUserString(String prompt, Scanner in, String... possibleValues) {
         int attempts = 0;
         String possibleValuesString = Arrays.toString(possibleValues);
-        String possibleValuesLowercase = possibleValuesString.toLowerCase();
+        //String possibleValuesLowercase = possibleValuesString.toLowerCase();
         while (true){
             String newPrompt;
             String invalidInputMsg = "";
@@ -31,9 +32,12 @@ public class InputUtility {
             }
             newPrompt = invalidInputMsg + prompt + possibleValuesString;
             String userInput = getString(newPrompt, in);
-            String inputLowercase = userInput.toLowerCase();
-            if(possibleValuesLowercase.contains(inputLowercase)){
-                return userInput;
+            //String inputLowercase = userInput.toLowerCase();
+            for (String string : possibleValues) {
+                if (userInput.equalsIgnoreCase(string))
+                {
+                    return userInput;
+                }
             }
             attempts += 1;
         }
@@ -90,6 +94,30 @@ public class InputUtility {
     }
 
     /**
+     * Prompts the user for a decimal number between the low bound (inclusive) and
+     * the high bound (inclusive).
+     *
+     * @param prompt the text of the user prompt
+     * @param lowBound the lower boundary of the range, inclusive
+     * @param highBound the upper boundary of the range, inclusive
+     * @param in a Scanner object
+     * @return the entered decimal number
+     */
+    public static double getDoubleInRange(String prompt, double lowBound, double highBound, Scanner in) {
+        double value = -1;
+        boolean needed = true;
+        while (needed) {
+            value = getDouble(prompt, in);
+            if (value < lowBound || value > highBound) {
+                UIUtility.showErrorMessage("Input not in range " + lowBound + " to " + highBound + ".", in);
+            } else {
+                needed = false;
+            }
+        }
+        return value;
+    }
+
+    /**
      * Prompts the user to enter a number. If the value is not a number, it prints an invalid input message and tries again.  Otherwise, it returns the value that was entered.
      * @param prompt - the prompt text for the user
      * @param convertToInt - a boolean value. If true the function will convert a whole number (example: 10.0) to its integer representation (example: 10)
@@ -103,6 +131,28 @@ public class InputUtility {
                 return Double.parseDouble(input);
             } catch (NumberFormatException nfe) {
                 UIUtility.showErrorMessage("Invalid decimal value", in);
+            }
+        }
+    }
+
+    /**
+     * Prompts the user to enter a whole number. If the value is not a whole
+     * number, prints the notIntMessage and tries again. Otherwise, returns the
+     * int that was entered.
+     *
+     * @param prompt the prompt text for the user
+     * @param in a Scanner object
+     * @return the Bigdecimal number entered
+     */
+    public static BigDecimal getBigdecimal(String prompt, Scanner in) {
+        String input;
+        while (true) {
+            System.out.print(prompt + ": ");
+            input = in.nextLine().trim();
+            try {
+                return new BigDecimal(input);
+            } catch (NumberFormatException nfe) {
+                UIUtility.showErrorMessage("Invalid Number", in);
             }
         }
     }

@@ -66,7 +66,7 @@ public class Chapter1 implements TaskHandler {
         int age = InputUtility.getIntInRange("What is your age?", 0, 120, in);
         System.out.printf("%nYou are %d years old.%n", age);
 
-        String favFood = InputUtility.validateUserString("What is your favorite food?", new String[] {"Pizza", "Sushi", "Ice Cream"}, in);
+        String favFood = InputUtility.validateUserString("What is your favorite food?", in, new String[] {"Pizza", "Sushi", "Ice Cream"});
         if (favFood.toLowerCase().equals("pizza")){
             System.out.println("I like pizza too!");
         } else if (favFood.toLowerCase().equals("sushi")) {

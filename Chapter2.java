@@ -50,8 +50,7 @@ public class Chapter2 implements TaskHandler {
 
     public void exercise2(Scanner in) {
         UIUtility.showMenuTitle("Exercise 2");
-        System.out.print("Please input a decimal number: ");
-        BigDecimal number = in.nextBigDecimal();
+        BigDecimal number = InputUtility.getBigdecimal("Please input a decimal number", in);
         BigDecimal oneHundred = new BigDecimal("100");
         BigDecimal num = number.setScale(0, RoundingMode.DOWN);
         System.out.println(num);

@@ -7,7 +7,7 @@ public class Chapter3 implements TaskHandler {
             String menuTitle = "Chapter 3 Menu";
             String prompt = "Select an exercise";
             String[] menuOptions = {
-                "Exercise 1", "Exercise 2", "Exercise 3", "Exercise 4"
+                "Exercise 1", "Exercise 2", "Exercise 3"
             };
             choice = UIUtility.showMenuOptions(menuTitle, prompt, menuOptions, in);
             if (choice == 0)
@@ -23,9 +23,6 @@ public class Chapter3 implements TaskHandler {
                     break;
                 case 3:
                     exercise3(in);
-                    break;
-                case 4:
-                    exercise4(in);
                     break;
             }
             UIUtility.pressEnterToContinue(in);
@@ -45,12 +42,6 @@ public class Chapter3 implements TaskHandler {
 
     public void exercise3(Scanner in) {
         UIUtility.showMenuTitle("Exercise 3");
-        
-    }
-
-    public void exercise4(Scanner in) {
-        UIUtility.showMenuTitle("Exercise 4");
-        // Sample code here
         
     }
 }
