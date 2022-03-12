@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Chapter3 implements TaskHandler {
     @Override
     public void handleTask(Scanner in) {
@@ -7,7 +8,7 @@ public class Chapter3 implements TaskHandler {
             String menuTitle = "Chapter 3 Menu";
             String prompt = "Select an exercise";
             String[] menuOptions = {
-                "Exercise 1", "Exercise 2", "Exercise 3"
+                    "Exercise 1", "Exercise 2", "Exercise 3"
             };
             choice = UIUtility.showMenuOptions(menuTitle, prompt, menuOptions, in);
             if (choice == 0)
@@ -32,7 +33,38 @@ public class Chapter3 implements TaskHandler {
 
     public void exercise1(Scanner in) {
         UIUtility.showMenuTitle("Exercise 1");
-       
+        int num1, num2;
+        boolean increase;
+        System.out.println("Please enter two number:");
+        num1 = InputUtility.getInt("Please enter the first number", in);
+        num2 = InputUtility.getInt("Please enter the second number", in);
+        increase = num1 < num2;
+        if (num1 == num2)
+        {
+            System.out.println("There is no number between them!");
+        } else 
+        {
+            if (increase == true)
+            {
+                for (int i = num1 + 1; i < num2; i++) {
+                    if (i % 2 == 0)
+                    {
+                        System.out.print(i + " ");
+                        if (i % num1 == 0) {break;}
+                    }
+                }
+            } else
+            {
+                for (int i = num1 - 1; i > num2; i--) {
+                    if (i % 2 == 0)
+                    {
+                        System.out.print(i + " ");
+                        if (i % num2 == 0) {break;}
+                    }
+                }
+            }
+        }
+
     }
 
     public void exercise2(Scanner in) {
@@ -42,7 +74,6 @@ public class Chapter3 implements TaskHandler {
 
     public void exercise3(Scanner in) {
         UIUtility.showMenuTitle("Exercise 3");
-        
+
     }
 }
-
