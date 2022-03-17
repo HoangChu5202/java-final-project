@@ -32,12 +32,19 @@ public class Demo {
         //     num *= 2;
         // }
 
-        String choice;
+        // String choice;
         // while (choice.equalsIgnoreCase("Yes"))
         // {
         //     choice = InputUtility.validateUserString("Continues? ", scanner, "Yes", "No");
         // }
-        choice = InputUtility.validateUserString("Continues? ", scanner, "Yes", "No");
-        scanner.close();
+        // choice = InputUtility.validateUserString("Continues? ", scanner, "Yes", "No");
+        // scanner.close();
+        int number;
+        try {
+            number = (int)10;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
     }
 }

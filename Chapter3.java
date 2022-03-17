@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Chapter3 implements TaskHandler {
     @Override
@@ -70,10 +71,61 @@ public class Chapter3 implements TaskHandler {
     public void exercise2(Scanner in) {
         UIUtility.showMenuTitle("Exercise 2");
 
+        String userInput = "run";
+        double min = Double.MAX_VALUE, max = Double.MIN_VALUE,
+                sum = 0, toNumber = 0;
+        int count = 0;
+        boolean run = true;
+
+        System.out.println("Enter some numbers (enter \"S\" to stop): ");
+        while (run == true)
+        {
+            userInput = in.nextLine();
+            try {
+                toNumber = Double.parseDouble(userInput);
+                sum += toNumber;
+                count++;
+                max = max > toNumber? max : toNumber;
+                min = min < toNumber? min : toNumber;
+            } catch (Exception e) {
+                run = !(userInput.equalsIgnoreCase("stop") || userInput.equalsIgnoreCase("s"));
+                // if (run == false) {break;}
+            }
+            
+        }
+
+        System.out.println("The sum is " + (int)sum);
+        System.out.println("The count is " + count);
+        System.out.printf("The average is: %.2f\n", (sum / count));
+        System.out.println("The highest is: " + (int)max);
+        System.out.println("The lowest is: " + (int)min);
     }
 
     public void exercise3(Scanner in) {
         UIUtility.showMenuTitle("Exercise 3");
+        int num1 = ThreadLocalRandom.current().nextInt(1, 13),
+            num2 = ThreadLocalRandom.current().nextInt(1, 13),
+            attempt = 3, result = num1 * num2, userAnswer;
+        
+        System.out.println("What is " + num1 + " x " + num2 + "?");
+        while (attempt > 0) 
+        {
+            userAnswer = InputUtility.getInt("Your answer is", in);
+            if (userAnswer == result)
+            {
+                System.out.println("Correct!");
+                break;
+            } 
+            else {
+                attempt--;
+                if (attempt > 0) {
+                    System.out.println("Incorrect. You have " + attempt + " attempt remaining");
+                }
+                else {
+                    System.out.println("Incorrect. The answer was " + result);
+                }
+            }
+        }
 
     }
 }
