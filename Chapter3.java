@@ -65,7 +65,6 @@ public class Chapter3 implements TaskHandler {
                 }
             }
         }
-
     }
 
     public void exercise2(Scanner in) {
@@ -89,7 +88,6 @@ public class Chapter3 implements TaskHandler {
                 min = min < toNumber? min : toNumber;
             } catch (Exception e) {
                 run = !(userInput.equalsIgnoreCase("stop") || userInput.equalsIgnoreCase("s"));
-                // if (run == false) {break;}
             }
             
         }
