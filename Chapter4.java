@@ -142,11 +142,68 @@ public class Chapter4 implements TaskHandler{
     }
 
     public void exercise7(Scanner in) {
-        
+        Fraction fFraction = new Fraction(13, 5);
+        Fraction sFraction = new Fraction(4, 8);
+        Fraction result = fFraction.add(sFraction);
+        System.out.println(result.mixedNumber());
+
+        fFraction = new Fraction(- 13, -5);
+        sFraction = new Fraction(13, -5);
+        result = fFraction.add(sFraction);
+        System.out.println(result.mixedNumber());
     }
 
     public void exercise8(Scanner in) {
-        
+        int fNumerator = InputUtility.getInt("Enter the first numerator", in);
+        int fDenominator = InputUtility.getInt("Enter the first denominator", in);
+        Fraction fFraction = new Fraction(fNumerator, fDenominator);
+
+        int sNumerator = InputUtility.getInt("Enter the second numerator", in);
+        int sDenominator = InputUtility.getInt("Enter the second denominator", in);
+        Fraction sFraction = new Fraction(sNumerator, sDenominator);
+
+        Fraction result = new Fraction();
+
+        int choice = 0;
+        while (true) {
+            String menuTitle = "Add, Subtract, Multiply or Divide Fraction";
+            String prompt = "Select what do you want to do";
+            String[] menuOptions = {
+                    "Add", "Subtract", "Multiply", "Divide"
+            };
+            choice = UIUtility.showMenuOptions(menuTitle, prompt, menuOptions, in);
+            if (choice == 0)
+                continue;
+            if (choice == menuOptions.length + 1)
+                break;
+            switch (choice) {
+                case 1:
+                    result = fFraction.add(sFraction);
+                    System.out.println();
+                    System.out.println("Result:");
+                    System.out.println(fFraction.mixedNumber() + " + " + sFraction.mixedNumber() + " = " + result.mixedNumber());
+                    break;
+                case 2:
+                    result = fFraction.subtract(sFraction);
+                    System.out.println();
+                    System.out.println("Result:");
+                    System.out.println(fFraction.mixedNumber() + " - " + sFraction.mixedNumber() + " = " + result.mixedNumber());
+                    break;
+                case 3:
+                    result = fFraction.multiply(sFraction);
+                    System.out.println();
+                    System.out.println("Result:");
+                    System.out.println(fFraction.mixedNumber() + " x " + sFraction.mixedNumber() + " = " + result.mixedNumber());
+                    break;
+                case 4:
+                    result = fFraction.divide(sFraction);
+                    System.out.println();
+                    System.out.println("Result:");
+                    System.out.println(fFraction.mixedNumber() + " : " + sFraction.mixedNumber() + " = " + result.mixedNumber());
+                    break;
+            }
+            UIUtility.pressEnterToContinue(in);
+        }
     }
 }
 
@@ -229,9 +286,46 @@ class Fraction {
         return result;
     }
 
-    public String add(int a, int b) {
+    public Fraction add(Fraction other) {
+        Fraction result = new Fraction();
+        Fraction fFraction =  this.simplify(); // First fraction
+        Fraction sFraction = other.simplify(); // Second Fraction
+        result.setDenominator( fFraction.getDenominator() * sFraction.getDenominator() ); // time 2 denominator together
+        result.setNumerator( (fFraction.getNumerator() * sFraction.getDenominator()) + 
+                                    (sFraction.getNumerator() * fFraction.getDenominator()) );
+        result = result.simplify();
+        return result;
+    }
 
-        return "";
+    public Fraction subtract(Fraction other) {
+        Fraction result = new Fraction();
+        Fraction fFraction =  this.simplify(); // First fraction
+        Fraction sFraction = other.simplify(); // Second Fraction
+        result.setDenominator( fFraction.getDenominator() * sFraction.getDenominator() ); // time 2 denominator together
+        result.setNumerator( (fFraction.getNumerator() * sFraction.getDenominator()) - 
+                                    (sFraction.getNumerator() * fFraction.getDenominator()) );
+        result = result.simplify();
+        return result;
+    }
+
+    public Fraction multiply(Fraction other) {
+        Fraction result = new Fraction();
+        Fraction fFraction =  this.simplify(); // First fraction
+        Fraction sFraction = other.simplify(); // Second Fraction
+        result.setDenominator( fFraction.getDenominator() * sFraction.getDenominator() ); 
+        result.setNumerator( fFraction.getNumerator() * sFraction.getNumerator() );
+        result = result.simplify();
+        return result;
+    }
+
+    public Fraction divide(Fraction other) {
+        Fraction result = new Fraction();
+        Fraction fFraction =  this.simplify(); // First fraction
+        Fraction sFraction = other.simplify(); // Second Fraction
+        result.setDenominator( fFraction.getDenominator() * sFraction.getNumerator() ); // time 2 denominator together
+        result.setNumerator( fFraction.getNumerator() * sFraction.getDenominator() );
+        result = result.simplify();
+        return result;
     }
 
     @Override 

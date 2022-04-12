@@ -163,3 +163,81 @@ for (int i = 0; i <= 100; i++) {
     System.out.println(i);
 }
 ```
+
+## Chapter 4
+
+**Creating Objects**
+
+- Each object must be referenced by different variable names. 
+- Both objects have the same attributes. They have different values associated with those attributes.
+- The biggest takeaway: Classes are the data type, while objects are variables that have been initiated with that type.
+
+```Java
+class Vehicle {  
+    int passengers; // number of passengers  
+    int fuelcap;    // fuel capacity in gallons 
+    double mpg;     // fuel consumption in miles per gallon 
+}  
+```
+
+**Reference Variables and Assignment**
+
+- Primitive types hold only one piece of data at a time.
+- When you assign one primitive-type variable to another, the variable on the left receives a copy of the value of the variable on the right.
+- Any change that you make to one primitive-type variable will not affect the value assigned to the other. Both variables are assigned different values.
+- Class/Object types can hold more than one piece of data and have methods.
+- When you assign one object-type variable to another, the variable on the left receives a reference to the value of the variable on the right.
+- Any change that you make to one object-type variable will affect both variables that reference it. Both variables are assigned the same value.
+
+**Methods**
+
+- Anytime you find yourself repeating code, you should move that code to a method. Methods are similar to functions in Python.
+- If the class is declared in a different file, methods must be declared with the public or private keyword. 
+- In the main method we "call" the object's method by specifying the object name, a period, the method name, and a set of parenthesis.
+- If the method required input parameters we would need to include input arguments in the parenthesis.
+- Methods can also be added to the same class as the main method. Because the main method is "static", any other method declared in this class will also need to be declared "static".
+- When a method returns a value, the data type of the value returned must be specified in the method signature instead of the void keyword.
+- The method return type must match the variable type it is assigned to.
+- The data types of the arguments must match the data types of the parameters.
+
+**Constructors**
+
+- A constructor is a method that has no return type. Its return type is always void.
+- The name of the constructor must be the exact same as the class.
+- If the class is created in a separate file, the keyword public must be included in the constructor's header/signature.
+
+```Java
+class MyClass { 
+    int x; 
+
+    MyClass() { 
+        x = 10; 
+    }  
+    MyClass(int i) {
+        this.x = i;
+    }
+}   
+```
+- Getter and setter in Java and C# very difference.
+- Java:
+```java
+public int getNumerator() {
+        return numerator;
+}
+
+public int getDenominator() {
+        return denominator;
+}
+public void setNumerator(int numerator) {
+        this.numerator = numerator;
+}
+public void setDenominator(int denominator) {
+        this.denominator = denominator;
+}
+```
+- In C#:
+```c
+public int Numerator(){get; set}
+
+public int setDenominator() {get; set}
+```

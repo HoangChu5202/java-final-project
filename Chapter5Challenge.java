@@ -70,16 +70,17 @@ public class Chapter5Challenge implements TaskHandler {
         Integer[] list = getRandomIntegerArray();
         System.out.println("Original list: " + Arrays.toString(list));
         Integer[] newList = new Integer[list.length+1];
-        Integer temp;
+
         int index = InputUtility.getIntInRange("Insert value at index", 0, list.length, in);
         int num = InputUtility.getInt("Enter an integer", in);
+
         for (int i = 0; i < list.length; i++) {
             newList[i] = list[i];
         }
-        newList[newList.length-1] = num;
-        temp = newList[index];
-        newList[index] = newList[newList.length-1];
-        newList[newList.length-1] = temp;
+        for (int i = newList.length - 1; i > index ; i--) {
+            newList[i] = list[i-1];
+        }
+        newList[index] = num;
         System.out.println("Modified list: " + Arrays.toString(newList));
     }
 
