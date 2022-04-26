@@ -1,3 +1,5 @@
+package src;
+
 public class InchesToMetter {
     public static void main(String[] args) {
         double metter;

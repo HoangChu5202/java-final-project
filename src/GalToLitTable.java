@@ -1,3 +1,4 @@
+package src;
 public class GalToLitTable {
     public static void main(String args[]) {
         double liters;
