@@ -1,5 +1,4 @@
-package scr.final_assignment.utililties;
-
+package src.Assignment;
 import java.util.Scanner;
 public class UIUtility {
     /**

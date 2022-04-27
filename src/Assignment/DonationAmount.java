@@ -1,4 +1,4 @@
-package scr.Assignment;
+package src.Assignment;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;

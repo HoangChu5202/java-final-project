@@ -1,4 +1,4 @@
-package scr.Assignment;
+package src.Assignment;
 public class Example {
     public static void main(String[] args) {
         String name1 = "Hoang";

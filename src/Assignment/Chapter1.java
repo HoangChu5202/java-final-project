@@ -1,4 +1,4 @@
-package scr.Assignment;
+package src.Assignment;
 import java.util.Scanner;
 public class Chapter1 implements TaskHandler {
     @Override

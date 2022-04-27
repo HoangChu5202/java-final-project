@@ -1,6 +1,5 @@
-package scr.Assignment;
+package src.Assignment;
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.Scanner;
 public class Chapter2 implements TaskHandler {

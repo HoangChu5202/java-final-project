@@ -1,4 +1,4 @@
-package scr.Assignment;
+package src.Assignment;
 public class GalToLitTable {
     public static void main(String args[]) {
         double liters;

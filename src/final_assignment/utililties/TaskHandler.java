@@ -1,4 +1,4 @@
-package scr.final_assignment.utililties;
+package src.final_assignment.utililties;
 
 import java.util.Scanner;
 public interface TaskHandler {

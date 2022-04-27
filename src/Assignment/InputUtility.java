@@ -1,5 +1,4 @@
-package scr.final_assignment.utililties;
-
+package src.Assignment;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Scanner;
