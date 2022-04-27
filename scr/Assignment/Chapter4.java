@@ -1,3 +1,4 @@
+package scr.Assignment;
 import java.math.BigInteger;
 import java.util.Scanner;
 

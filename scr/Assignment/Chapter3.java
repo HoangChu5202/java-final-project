@@ -1,3 +1,4 @@
+package scr.Assignment;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 

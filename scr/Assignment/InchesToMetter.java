@@ -1,3 +1,4 @@
+package scr.Assignment;
 public class InchesToMetter {
     public static void main(String[] args) {
         double metter;

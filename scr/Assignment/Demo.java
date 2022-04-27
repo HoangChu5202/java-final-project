@@ -1,14 +1,5 @@
+package scr.Assignment;
 import java.util.Scanner;
-
-
-
-
-
-
-
-
-
-
 
 
 

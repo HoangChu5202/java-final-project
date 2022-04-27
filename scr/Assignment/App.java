@@ -1,3 +1,5 @@
+package scr.Assignment;
+
 import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
@@ -28,7 +30,10 @@ public class App {
                     break;
                 case 4:
                     new Chapter4().handleTask(scanner);
-                    break;   
+                    break;  
+                case 5:
+                    new Chapter5().handleTask(scanner);
+                    break; 
                 case 6:
                     new Chapter5Challenge().handleTask(scanner);
                     break;
