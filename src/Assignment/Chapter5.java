@@ -60,6 +60,57 @@ public class Chapter5 implements TaskHandler{
     }
 
     private void exercise2(Scanner in) {
-        
+        String str1 = InputUtility.getString("Enter a string", in);
+        method_ex2(str1);
+        String str2 = InputUtility.getString("Enter another string", in);
+        method_ex2(str2);
+        if (str1.compareTo(str2) < 0) {
+            System.out.println(str1 + " comes alphabetically before " + str2);
+        } else {
+            System.out.println(str2 + " comes alphabetically before " + str1);
+        }
+    }
+
+    private void method_ex2(String str)
+    {
+        System.out.println("**Static**");
+        System.out.println("Length: " + str.length());
+        String subStr;
+        try {
+            subStr = str.substring(0,3);
+        } catch (IndexOutOfBoundsException e) {
+            subStr = str.substring(0);
+        }
+        System.out.println("First 3 characters: " + subStr);
+        System.out.println("Last character: " + str.substring(str.length()-1));
+        System.out.println("Contains the letter i: " + str.contains("i"));
+        System.out.println("Lowercase: " + str.toLowerCase());
+        System.out.println("Is a palindrome: " + isPalindrome(str));
+        System.out.println();
+    }
+    private boolean isPalindrome(String str)
+    {
+        boolean result = false;
+        String s = "";
+        for (char chr : str.toCharArray()) {
+            if (chr != 32)
+            {
+              s += String.valueOf(chr) + ","; 
+            }
+        }
+        String[] strArr = s.split(",");
+        int count = strArr.length - 1;
+
+        for (int i = 0; i <= strArr.length / 2; i++) {
+            if (strArr[i].equalsIgnoreCase(strArr[count]))
+            {
+                result = true;
+            } else {
+                result = false;
+                break;
+            }
+            count--;
+        }
+        return result;
     }
 }
