@@ -6,18 +6,18 @@ public class Card implements Comparable<Card>{
 
     private String cardName;
     private Attribute attribute;
-    private int level;
+    private int star;
 
     public Card() {
         cardName = "Undefined";
         attribute = new Attribute();
-        level = 0;
+        star = 0;
     }
 
-    public Card(String cardName, Attribute attribute, int level) {
+    public Card(String cardName, Attribute attribute, int star) {
         setCardName(cardName);
         setAttribute(attribute);
-        setLevel(level);
+        setStar(star);
     }
 
     //Card name
@@ -36,23 +36,23 @@ public class Card implements Comparable<Card>{
         }
     }
     //Level
-    public int getLevel() {
-        return this.level;
+    public int getStar() {
+        return this.star;
     }
 
-    public void setLevel(int level) {
-        validateLevel(level);
-        this.level = level;
+    public void setStar(int star) {
+        validateLevel(star);
+        this.star = star;
     }
 
-    private void validateLevel(int level) {
-        if (level < 0) {
+    private void validateLevel(int star) {
+        if (star < 0) {
             throw new IllegalArgumentException("Level have to be greater or equal 0.");
         }
-        if (level > 13) {
+        if (star > 13) {
             throw new IllegalArgumentException("Level have to less than 13.");
         }
-        if (level == 0) {
+        if (star == 0) {
             if ( !(attribute.toString().equalsIgnoreCase("Spell") || attribute.toString().equalsIgnoreCase("Trap")) ) {
                 throw new IllegalArgumentException("Attribute must be \"Spell\" or \"Trap\" when level is 0");
             }
@@ -76,7 +76,7 @@ public class Card implements Comparable<Card>{
 
     @Override
     public String toString() {
-        return String.format("Card Name: %s%Level: %d%nAttribute: %s%n", cardName, level, attribute);
+        return String.format("Card Name: %s%nLevel: %d%nAttribute: %s%n", cardName, star, attribute.toString());
     }
 
     @Override

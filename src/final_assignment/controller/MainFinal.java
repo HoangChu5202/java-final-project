@@ -2,13 +2,14 @@ package src.final_assignment.controller;
 
 import java.util.Scanner;
 
+import src.final_assignment.model.CardHolder;
 import src.final_assignment.utililties.*;
 
 public class MainFinal {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         int choice = 0;  
-        // Library library = new Library();
+        CardHolder cardHolder = new CardHolder();
         while (true) {
             String menuTitle = "Main Menu";
             String prompt = "Select an option";
@@ -19,7 +20,7 @@ public class MainFinal {
                 , "Update a card"
                 , "Remove a card"
                 , "Move a card to a new location"
-                , "Swap locations of two cards"
+                , "Swap location of two cards"
             };
             choice = UIUtility.showMenuOptions(menuTitle, prompt, menuOptions, scanner);
             if (choice == 0)
@@ -28,16 +29,16 @@ public class MainFinal {
                 break;
             switch (choice) {
                 case 1:
-                    
+                    cardHolder.addCard(scanner);
                     break;
                 case 2:
-                    
+                    cardHolder.showAllCards();
                     break;
                 case 3:
                     
                     break;
                 case 4:
-                    
+                    cardHolder.updateCard(scanner);
                     break;
                 case 5:
                     

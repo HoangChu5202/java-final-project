@@ -138,7 +138,7 @@ public class Chapter4 implements TaskHandler{
         fraction = new Fraction(13, -5);
         System.out.println(fraction.mixedNumber());
 
-        fraction = new Fraction(-13, -5);
+        fraction = new Fraction(-2, 3);
         System.out.println(fraction.mixedNumber());
     }
 

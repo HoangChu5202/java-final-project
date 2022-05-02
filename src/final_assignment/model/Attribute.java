@@ -11,7 +11,7 @@ public class Attribute implements Comparable<Attribute>{
     private String attribute;
 
     public Attribute() {
-        attribute = "Undefined";
+        attribute = "Unknow";
     }
 
     public Attribute(String attribute) {
@@ -24,6 +24,7 @@ public class Attribute implements Comparable<Attribute>{
 
     public void setAttribute(String attribute) {
         validateAttribute(attribute);
+        this.attribute = attribute;
     }
 
     private void validateAttribute(String attribute) {
