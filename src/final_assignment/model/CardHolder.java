@@ -33,9 +33,9 @@ public class CardHolder {
             Card card;
             String cardName;
             int star;
-            Attribute attribute;
-            String cardType = InputUtility.validateUserString("What type of card you want to add?", in, "Nomarl", "Rare");
-            if (cardType.equalsIgnoreCase("Nomarl")) {
+            Attribute attribute = new Attribute();
+            String cardType = InputUtility.validateUserString("What type of card you want to add?", in, "Normal", "Rare");
+            if (cardType.equalsIgnoreCase("Normal")) {
                 card = new Card();
             } else {
                 card = new RareCard();
@@ -50,7 +50,39 @@ public class CardHolder {
                     System.out.println(e.getMessage());
                 }
             }
-
+            //Set card's attribute
+            while (true) {
+                String userAttributeSet = InputUtility.validateUserString("What attribute of the card?", in, attribute.getAttributeList());
+                attribute.setAttribute(userAttributeSet); ;
+                try {
+                    card.setAttribute(attribute);
+                    break;
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            //Set level
+            while (true) {
+                star = InputUtility.getIntInRange("What is the card's star?", 1, 13, in);
+                try {
+                    card.setStar(star);
+                    break;
+                } catch (IllegalArgumentException e) {
+                    if (cardType.equalsIgnoreCase("Rare")) {
+                        String choice = InputUtility.getString("This card is not rare. \nDo you want to add it to card holder as a nomarl card? \n[Yes to continues]", in);
+                        choice = choice.toLowerCase();
+                        if (choice.contains("y")) {
+                            card = new Card(cardName, attribute, star);
+                        }
+                        else {
+                            System.out.println("Faid to add new card. \nExiting method...");
+                            return;
+                        }
+                    } else {
+                        System.out.println(e.getMessage());
+                    }
+                } 
+            }
 
             cards[cardCount++] = card;
             UIUtility.showMenuTitle("Card successfully added");
@@ -75,6 +107,7 @@ public class CardHolder {
             System.out.println("Exiting update method");
             return;
         }
+        //update new name
         Card card = cards[choice -1];
         while (true) {
             String  cardName = InputUtility.getString("New name? [Press Enter to keep \"" + card.getCardName() + "\"]: ", in);   
@@ -88,6 +121,7 @@ public class CardHolder {
                 System.out.println(e.getMessage());
             }
         }
+        //need to update attribute and star
     }
 
     public void moveCard(Scanner in) {
@@ -105,5 +139,6 @@ public class CardHolder {
         Card card = cards[choice - 1];
         int moveToIndex = InputUtility.getIntInRange("Where would you like to move this book", 1, cardCount, in);
         moveToIndex--;
+        //Add code later
     }
 }

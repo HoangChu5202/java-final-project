@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Attribute implements Comparable<Attribute>{
 
-    private String[] attributeArray = {"Fire", "Water", "Wind", "Earth", "Light", "Dark", "Spell", "Trap"};
+    private String[] attributeArray = {"fire", "water", "wind", "earth", "light", "dark"};
     
     private String attribute;
 
@@ -19,7 +19,7 @@ public class Attribute implements Comparable<Attribute>{
     }
 
     public String getAttribute() {
-        return attribute;
+        return this.attribute;
     }
 
     public void setAttribute(String attribute) {
@@ -27,12 +27,16 @@ public class Attribute implements Comparable<Attribute>{
         this.attribute = attribute;
     }
 
+    public String[] getAttributeList() {
+        return this.attributeArray;
+    }
+
     private void validateAttribute(String attribute) {
         List<String> attributeList = new ArrayList<>(Arrays.asList(attributeArray));
         if (attribute == null || attribute == "") {
             throw new IllegalArgumentException("Attribute is requied.");
         }
-        if (attributeList.contains(attribute) == false) {
+        if (attributeList.contains(attribute.toLowerCase()) == false) {
             throw new IllegalArgumentException("Card's attribute is not correct please check again. \nMake sure your attribute is in this list: \n Fire, Water, Wind, Earth, Light, Dark, Spell, Trap");
         }
     }

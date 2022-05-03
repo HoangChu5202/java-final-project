@@ -25,7 +25,7 @@ public class RareCard extends Card{
             rareCard = "SuperRare";
         } else if ( super.getStar() == 13) {
             rareCard = "UltraRare";
-        } else {
+        } else if (super.getStar() < 7){
             throw new IllegalArgumentException("This card is not rare.");
         }
     }
