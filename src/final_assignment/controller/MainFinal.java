@@ -35,19 +35,19 @@ public class MainFinal {
                     cardHolder.showAllCards();
                     break;
                 case 3:
-                    
+                    cardHolder.sortCardByName();
                     break;
                 case 4:
                     cardHolder.updateCard(scanner);
                     break;
                 case 5:
-                    
+                    cardHolder.deleteCard(scanner);
                     break;
                 case 6:
-                    
+                    cardHolder.moveCard(scanner);
                     break;
                 case 7:
-                    
+                    cardHolder.swapTwoCard(scanner);
                     break;
             }
             UIUtility.pressEnterToContinue(scanner);

@@ -1,6 +1,5 @@
 package src.final_assignment.model;
 
-import src.final_assignment.model.Attribute;
 
 public class Card implements Comparable<Card>{
 
@@ -81,10 +80,10 @@ public class Card implements Comparable<Card>{
 
     @Override
     public int compareTo(Card other) {
-        int result = this.cardName.compareTo(other.cardName);
-        if (result == 0) {
-            result = this.attribute.compareTo(other.attribute);
-        }
+        int result = this.cardName.compareTo(other.getCardName());
+        // if (result == 0) {
+        //     result = this.attribute.compareTo(other.attribute);
+        // }
         return result;
     }
     
